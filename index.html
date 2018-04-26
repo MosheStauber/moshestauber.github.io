@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+ 	<meta charset="utf-8"/>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css.css">
+	<script type="text/javascript" src="js.js"></script>
+	<style>
+		body {
+			/*text-align: center;*/
+			background-color: #eee;
+			padding: 15px;
+		}
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 100%;
+		    margin-top: 15px;
+		}
+
+		td, th {
+		    border: 1px solid #aaaaaa;
+		    text-align: left;
+		    padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="display: flex;flex-direction: column; align-content: center; align-items: flex-start;">
+		<h2>Update CityWeather Contract<br/> (Rinkeby testnet)</h2>
+		<div>
+			<form onsubmit="postToBlockchain(); return false;">
+				<input id="city_input" type="text" placeholder="City Name" oninput="setCustomValidity('')" required>
+				<br>
+				<input id="temp_input" type="Number" step="0.1" placeholder="Temperature (&#8457;)" required>
+				<br>
+				<input type="submit" value="Submit">
+			</form>
+			<a id="etherscan_link" target="_blank" style="display: none">etherscan.io</a>
+		</div>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>City</th>
+					<th>Contract Temp</th>
+					<th>Actual Temp</th>
+					<th>Comparison</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id='city_name'></td>
+					<td><span id='contract_temp'></span> &#8457;</td>
+					<td><span id='actual_temp'></span> &#8457;</td>
+					<td id='higher_lower'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br/>
+	<p id="countdown_p" style="display: none;">Time to actual temp reading: <span id="countdown"></span></p>
+	<br/>
+	<br/>
+	<div style="width: 75%;">
+		<table>
+			<thead>
+				<tr>
+					<th>Address</th>
+					<th>ETH Balance</th>
+					<th>No of transactions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id='eth_address'></td>
+					<td><span id='eth_balance'></span> &#9830;</td>
+					<td id='number_of_txs'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<h2>Transactions in the last 1000 blocks</h2>
+	<ul id="lastNtx">
+		
+	</ul>
+</body>
+
+</html>
