@@ -66,7 +66,7 @@ function postToBlockchain() {
 	var cityNameInput = document.getElementById('city_input');
 	var temperatureInput = document.getElementById('temp_input');
 
-	var url = `http://api.openweathermap.org/data/2.5/weather?q=${cityNameInput.value}&APPID=${apiKey}`;
+	var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput.value}&APPID=${apiKey}`;
 	
 	// Check if the city exists in the weather api database
 	fetch(url)
@@ -161,7 +161,7 @@ function compareTemperaturePrediction(){
 	var contractTemp = document.getElementById('contract_temp').textContent;
 	var cityName = document.getElementById('city_name').textContent
 
-	var url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${apiKey}`;
+	var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${apiKey}`;
 	
 	// get the weather for the city
 	fetch(url)
