@@ -45,12 +45,13 @@ window.addEventListener('load', function() {
   var contract = web3js.eth.contract(contractABI);
   cityWeatherContract = contract.at(contractAddress);
 
+  // Get the decimal factor the contract uses to convert between temp float and contract int
   cityWeatherContract.decimalFactor((err, res) => {
 	if (err){
 		console.log(err);
 		return;
 	}
-
+	// force floating point number
 	contractDecimalFactor = res * 1.0;
 	getCurrentContractData();
   });
@@ -226,9 +227,8 @@ function loadUserInfo(){
 	})
 }
 
-function getLastNAccountTransactions(accAddress, endBlockNumber, N) {
-  console.log("Searching for transactions to/from account \"" + accAddress + "\" within blocks " + endBlockNumber);
 
+function getLastNAccountTransactions(accAddress, endBlockNumber, N) {
   var txList = document.getElementById("lastNtx");
   var txCount = 0;
   for (var i = endBlockNumber; i > endBlockNumber-1000 && txCount < N; i--) {
@@ -247,17 +247,6 @@ function getLastNAccountTransactions(accAddress, endBlockNumber, N) {
 		        	var li = document.createElement('li');
 		        	li.appendChild(link);
 		        	txList.appendChild(li);
-		          console.log("  tx hash          : " + e.hash + "\n"
-		            + "   nonce           : " + e.nonce + "\n"
-		            + "   blockHash       : " + e.blockHash + "\n"
-		            + "   blockNumber     : " + e.blockNumber + "\n"
-		            + "   transactionIndex: " + e.transactionIndex + "\n"
-		            + "   from            : " + e.from + "\n" 
-		            + "   to              : " + e.to + "\n"
-		            + "   value           : " + e.value + "\n"
-		            + "   gasPrice        : " + e.gasPrice + "\n"
-		            + "   gas             : " + e.gas + "\n"
-		            + "   input           : " + e.input);
 		        }
 		      })
 		    }
@@ -265,6 +254,9 @@ function getLastNAccountTransactions(accAddress, endBlockNumber, N) {
     });
   }
 }
+
+
+
 
 var contractAddress = "0x73cdbe6bb98081617e8756b4b6f08324072d4986";
 var contractABI = [
