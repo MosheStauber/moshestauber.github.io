@@ -130,6 +130,7 @@ function postToBlockchain() {
 	})
 	// Show invalid input hint to user
 	.catch((error) => {
+		console.log(error);
 		cityNameInput.setCustomValidity(`${cityNameInput.value} is not a valid city`);
 		cityNameInput.reportValidity();
 	});
