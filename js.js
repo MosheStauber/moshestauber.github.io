@@ -54,9 +54,8 @@ window.addEventListener('load', function() {
 	// force floating point number
 	contractDecimalFactor = res * 1.0;
 	getCurrentContractData();
+  	loadUserInfo();
   });
-
-  loadUserInfo();
 
 });
 
